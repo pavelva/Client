@@ -22,7 +22,7 @@ namespace Client
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 
             sdnSubForums.Width = 25;
-            sdnSubForums.Height = this.panel1.Height;
+            sdnSubForums.Height = this.panel1.Height - 5;
             sdnSubForums.Minimum = 0;
             sdnSubForums.Maximum = ( sfNames.Count / 6);
             sdnSubForums.Value = 0;
