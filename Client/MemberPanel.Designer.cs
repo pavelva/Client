@@ -28,38 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.memberMenu = new System.Windows.Forms.ToolStrip();
+            this.lbluserName = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnProfile = new System.Windows.Forms.ToolStripLabel();
             this.btnDisconnect = new System.Windows.Forms.ToolStripLabel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.toolStrip1.SuspendLayout();
+            this.memberMenu.SuspendLayout();
             this.SuspendLayout();
             // 
-            // toolStrip1
+            // memberMenu
             // 
-            this.toolStrip1.BackColor = System.Drawing.SystemColors.WindowText;
-            this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 15F);
-            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripLabel1,
+            this.memberMenu.BackColor = System.Drawing.SystemColors.WindowText;
+            this.memberMenu.Font = new System.Drawing.Font("Segoe UI", 15F);
+            this.memberMenu.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.memberMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lbluserName,
             this.toolStripSeparator2,
             this.btnProfile,
             this.btnDisconnect});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(984, 31);
-            this.toolStrip1.TabIndex = 0;
-            this.toolStrip1.Text = "toolStrip1";
+            this.memberMenu.Location = new System.Drawing.Point(0, 0);
+            this.memberMenu.Name = "memberMenu";
+            this.memberMenu.Size = new System.Drawing.Size(984, 31);
+            this.memberMenu.TabIndex = 0;
+            this.memberMenu.Text = "toolStrip1";
             // 
-            // toolStripLabel1
+            // lbluserName
             // 
-            this.toolStripLabel1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripLabel1.ForeColor = System.Drawing.SystemColors.Window;
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(100, 28);
-            this.toolStripLabel1.Text = "userName";
+            this.lbluserName.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.lbluserName.ForeColor = System.Drawing.SystemColors.Window;
+            this.lbluserName.Name = "lbluserName";
+            this.lbluserName.Size = new System.Drawing.Size(100, 28);
+            this.lbluserName.Text = "userName";
             // 
             // toolStripSeparator2
             // 
@@ -74,6 +74,7 @@
             this.btnProfile.Name = "btnProfile";
             this.btnProfile.Size = new System.Drawing.Size(68, 28);
             this.btnProfile.Text = "Profile";
+            this.btnProfile.Click += new System.EventHandler(this.btnProfile_Click);
             this.btnProfile.MouseEnter += new System.EventHandler(this.btn_MouseEnter);
             this.btnProfile.MouseLeave += new System.EventHandler(this.btn_MouseLeave);
             // 
@@ -101,7 +102,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 462);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.memberMenu);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximumSize = new System.Drawing.Size(1000, 500);
             this.MinimumSize = new System.Drawing.Size(1000, 500);
@@ -109,8 +110,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Forum Genarator System";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            this.memberMenu.ResumeLayout(false);
+            this.memberMenu.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -118,8 +119,8 @@
 
         #endregion
 
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.ToolStrip memberMenu;
+        private System.Windows.Forms.ToolStripLabel lbluserName;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripLabel btnProfile;
         private System.Windows.Forms.ToolStripLabel btnDisconnect;

@@ -14,11 +14,12 @@ namespace Client
     public partial class SubForumPanel : Form
     {
         private List<String> sfNames;
-        private int table_index = 0;
+        private string fName;
         public SubForumPanel(string fName, List<String> sfNames)
         {
             InitializeComponent();
             this.sfNames = sfNames;
+            this.fName = fName;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 
             sdnSubForums.Width = 25;
@@ -80,7 +81,6 @@ namespace Client
         private void sdnSubForums_Scroll(object sender, ScrollEventArgs e)
         {
                 painTable(sdnSubForums.Value*6, sfNames);
-                table_index = sdnSubForums.Value;
         }
 
         public void painTable(int index , List<String> sfNames)

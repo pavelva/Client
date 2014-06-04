@@ -13,9 +13,14 @@ namespace Client
 {
     public partial class MemberPanel : Form
     {
+        private Form _panel;
+        private string userName = "David";
         public MemberPanel()
         {
             InitializeComponent();
+            this.memberMenu.Items.Find("btnProfile", true)[0].Click += btnProfile_Clicked;
+            this.memberMenu.Items.Find("btnDisconnect", true)[0].Click += btnDisconnect_Clicked;
+            this.lbluserName.Text = userName;
         }
 
 
@@ -29,17 +34,49 @@ namespace Client
             MouseHandler.mouseLeaveBtn(this);
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void btnProfile_Clicked(object sender, EventArgs e)
         {
-            SubForumPanel s = new SubForumPanel("Cars", new List<string>() { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "18", "19", "20", "18", "19", "20" });
-            s.TopLevel = false;
-            s.Show();
-
-            this.panel1.Controls.Add(s);
+            ToolStripItem btnProfile = this.memberMenu.Items.Find("btnProfile", true)[0];
+            btnProfile.Enabled = false;
+            btnProfile.MouseEnter -= btn_MouseEnter;
+            btnProfile.MouseLeave -= btn_MouseLeave;
+            this.Cursor = Cursors.Default;
+            this.panel1.Controls.Remove(this._panel);
         }
 
+        private void btnClose_Clicked(object sender, EventArgs e)
+        {
+            this.panel1.Controls.Remove((Control)sender);
+            foreach(ToolStripItem btm in this.memberMenu.Items){
+                if (btm.Name != "lbluserName")
+                {
+                    btm.Enabled = true;
+                    btm.MouseEnter += new System.EventHandler(this.btn_MouseEnter);
+                    btm.MouseLeave += new System.EventHandler(this.btn_MouseLeave);
+                }
+            }
+            this.panel1.Controls.Add(this._panel);
+        }
 
- 
+        private void btnDisconnect_Clicked(object sender, EventArgs e)
+        {
+            MessageBox.Show("Disconnect");
+        }
+
+        
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            _panel = new SubForumPanel("Cars", new List<string>() { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "18", "19", "20", "18", "19", "20" });
+            _panel.TopLevel = false;
+            _panel.Show();
+            this.panel1.Controls.Add(_panel);
+        }
+
+        private void btnProfile_Click(object sender, EventArgs e)
+        {
+            ProfilePanel profilePnael = new ProfilePanel();
+            profilePnael.
+        }
 
     }
 }
