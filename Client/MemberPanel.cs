@@ -15,6 +15,8 @@ namespace Client
     {
         private Form _panel;
         private string userName = "David";
+        private string forumName = "Cars";
+
         public MemberPanel()
         {
             InitializeComponent();
@@ -54,7 +56,7 @@ namespace Client
         
         private void Form1_Load(object sender, EventArgs e)
         {
-            _panel = new SubForumPanel("Cars", new List<string>() { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "18", "19", "20", "18", "19", "20" });
+            _panel = new SubForumPanel(forumName, new List<string>() { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "18", "19", "20", "18", "19", "20" }, btnSubForum_Clicked);
             _panel.TopLevel = false;
             _panel.Show();
             this.panel1.Controls.Add(_panel);
@@ -64,15 +66,17 @@ namespace Client
         {
             ProfilePanel profilePnael = new ProfilePanel();
             profilePnael.btnCancel.Click += btnClose_Clicked;
-            this.panel1.Controls.Clear();
             profilePnael.TopLevel = false;
+
+            this.panel1.Controls.Clear();
             this.panel1.Controls.Add(profilePnael);
             profilePnael.Show();
         }
 
-
-
-
+        private void btnSubForum_Clicked(object sender, EventArgs e)
+        {
+            DefualtLayout();
+        }
 
         private void btnClose_Clicked(object sender, EventArgs e)
         {

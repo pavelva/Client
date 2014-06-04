@@ -15,13 +15,17 @@ namespace Client
     {
         private List<String> sfNames;
         private string fName;
-        public SubForumPanel(string fName, List<String> sfNames)
+        private string sfName;
+        private System.EventHandler SubForumBtnClickHandler;
+
+        public SubForumPanel(string fName, List<String> sfNames, System.EventHandler SubForumBtnClickHandler)
         {
             InitializeComponent();
             this.sfNames = sfNames;
             this.fName = fName;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.SubForumBtnClickHandler = SubForumBtnClickHandler;
 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             sdnSubForums.Width = 25;
             sdnSubForums.Height = this.panel1.Height - 5;
             sdnSubForums.Minimum = 0;
@@ -44,13 +48,16 @@ namespace Client
         }
         private void SubForumPanel_Load(object sender, EventArgs e)
         {
-
+           
         }
         protected override void OnPaint(PaintEventArgs pe)
         {
             base.OnPaint(pe);
         }
-
+        public string getSubForumName()
+        {
+            return this.sfName;
+        }
         private Button subForumButtonCreator(string name)
         {
             Button btn = new Button();
@@ -62,12 +69,11 @@ namespace Client
             btn.FlatStyle = FlatStyle.Flat;
             btn.FlatAppearance.BorderColor = Color.FromArgb(241, 241, 241);
             btn.FlatAppearance.BorderSize = 1;
-
+            btn.Click += SubForumBtnClickHandler;
             btn.MouseEnter += new System.EventHandler(btn_MouseEnter);
             btn.MouseLeave += new System.EventHandler(btn_MouseLeave);
             return btn;
         }
-
 
 
         private void btn_MouseEnter(object sender, EventArgs e)
