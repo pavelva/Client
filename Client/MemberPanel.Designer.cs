@@ -30,10 +30,12 @@
         {
             this.memberMenu = new System.Windows.Forms.ToolStrip();
             this.lbluserName = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.disconnect_userName = new System.Windows.Forms.ToolStripSeparator();
             this.btnProfile = new System.Windows.Forms.ToolStripLabel();
             this.btnDisconnect = new System.Windows.Forms.ToolStripLabel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnHome = new System.Windows.Forms.ToolStripLabel();
+            this.Home_profile = new System.Windows.Forms.ToolStripSeparator();
             this.memberMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,7 +46,9 @@
             this.memberMenu.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.memberMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lbluserName,
-            this.toolStripSeparator2,
+            this.disconnect_userName,
+            this.btnHome,
+            this.Home_profile,
             this.btnProfile,
             this.btnDisconnect});
             this.memberMenu.Location = new System.Drawing.Point(0, 0);
@@ -61,11 +65,11 @@
             this.lbluserName.Size = new System.Drawing.Size(100, 28);
             this.lbluserName.Text = "userName";
             // 
-            // toolStripSeparator2
+            // disconnect_userName
             // 
-            this.toolStripSeparator2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
+            this.disconnect_userName.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.disconnect_userName.Name = "disconnect_userName";
+            this.disconnect_userName.Size = new System.Drawing.Size(6, 31);
             // 
             // btnProfile
             // 
@@ -96,6 +100,21 @@
             this.panel1.Size = new System.Drawing.Size(984, 431);
             this.panel1.TabIndex = 1;
             // 
+            // btnHome
+            // 
+            this.btnHome.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnHome.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(65, 28);
+            this.btnHome.Text = "Home";
+            this.btnHome.MouseEnter += new System.EventHandler(this.btn_MouseEnter);
+            this.btnHome.MouseLeave += new System.EventHandler(this.btn_MouseLeave);
+            // 
+            // Home_profile
+            // 
+            this.Home_profile.Name = "Home_profile";
+            this.Home_profile.Size = new System.Drawing.Size(6, 31);
+            // 
             // MemberPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -121,10 +140,12 @@
 
         private System.Windows.Forms.ToolStrip memberMenu;
         private System.Windows.Forms.ToolStripLabel lbluserName;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripSeparator disconnect_userName;
         private System.Windows.Forms.ToolStripLabel btnProfile;
         private System.Windows.Forms.ToolStripLabel btnDisconnect;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ToolStripLabel btnHome;
+        private System.Windows.Forms.ToolStripSeparator Home_profile;
 
     }
 }

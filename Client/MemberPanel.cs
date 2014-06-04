@@ -22,6 +22,7 @@ namespace Client
             InitializeComponent();
             this.memberMenu.Items.Find("btnProfile", true)[0].Click += btnProfile_Clicked;
             this.memberMenu.Items.Find("btnDisconnect", true)[0].Click += btnDisconnect_Clicked;
+            this.memberMenu.Items.Find("btnHome", true)[0].Click += btnHome_Clicked;
             this.lbluserName.Text = userName;
         }
 
@@ -53,7 +54,10 @@ namespace Client
             MessageBox.Show("Disconnect");
         }
 
-        
+        private void btnHome_Clicked(object sender, EventArgs e)
+        {
+            DefualtLayout();
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             _panel = new SubForumPanel(forumName, new List<string>() { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "18", "19", "20", "18", "19", "20" }, btnSubForum_Clicked);
@@ -67,7 +71,6 @@ namespace Client
             ProfilePanel profilePnael = new ProfilePanel();
             profilePnael.btnCancel.Click += btnClose_Clicked;
             profilePnael.TopLevel = false;
-
             this.panel1.Controls.Clear();
             this.panel1.Controls.Add(profilePnael);
             profilePnael.Show(); 
@@ -75,7 +78,11 @@ namespace Client
 
         private void btnSubForum_Clicked(object sender, EventArgs e)
         {
-            DefualtLayout();
+            PostPanel postPanel = new PostPanel(this.forumName, ((Button)sender).Text);
+            postPanel.TopLevel = false;
+            this.panel1.Controls.Clear();
+            this.panel1.Controls.Add(postPanel);
+            postPanel.Show(); 
         }
 
         private void btnClose_Clicked(object sender, EventArgs e)
@@ -91,7 +98,13 @@ namespace Client
 
         private void DefualtLayout()
         {
+
+            foreach (Control c in this.panel1.Controls)
+                if (typeof(Form) == c.GetType())
+                    ((Form)c).Close();
+
             this.panel1.Controls.Clear();
+
             foreach (ToolStripItem btm in this.memberMenu.Items)
             {
                 if (btm.Name != "lbluserName")
@@ -105,6 +118,8 @@ namespace Client
             lbluserName.Text = userName;
             this.panel1.Controls.Add(this._panel);
         }
+
+
 
     }
 }
