@@ -82,6 +82,21 @@ namespace Client
             postPanel.TopLevel = false;
             this.panel1.Controls.Clear();
             this.panel1.Controls.Add(postPanel);
+
+            ToolStripItem addPost = new ToolStripLabel();
+            addPost.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            addPost.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            addPost.Name = "btnAddPost";
+            addPost.Size = new System.Drawing.Size(65, 28);
+            addPost.Text = "Add Post";
+            addPost.MouseEnter += new System.EventHandler(this.btn_MouseEnter);
+            addPost.MouseLeave += new System.EventHandler(this.btn_MouseLeave);
+            
+            ToolStripItem Home_AddPost = new System.Windows.Forms.ToolStripSeparator();
+            Home_AddPost.Name = "Home_AddPost";
+
+            this.memberMenu.Items.Add(Home_AddPost);
+            this.memberMenu.Items.Add(addPost);
             postPanel.Show(); 
         }
 
@@ -105,6 +120,8 @@ namespace Client
 
             this.panel1.Controls.Clear();
 
+            this.memberMenu.Items.RemoveByKey("btnAddPost");
+            this.memberMenu.Items.RemoveByKey("Home_AddPost");
             foreach (ToolStripItem btm in this.memberMenu.Items)
             {
                 if (btm.Name != "lbluserName")
@@ -113,6 +130,7 @@ namespace Client
                     btm.MouseEnter += new System.EventHandler(this.btn_MouseEnter);
                     btm.MouseLeave += new System.EventHandler(this.btn_MouseLeave);
                 }
+
             }
             userName = "David";
             lbluserName.Text = userName;
