@@ -13,23 +13,33 @@ namespace Client
 {
     public partial class SubForumPanel : Form
     {
+        private List<String> sfNames;
+        private int table_index = 0;
         public SubForumPanel(string fName, List<String> sfNames)
         {
             InitializeComponent();
+            this.sfNames = sfNames;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+
+            sdnSubForums.Width = 25;
+            sdnSubForums.Height = this.panel1.Height;
+            sdnSubForums.Minimum = 0;
+            sdnSubForums.Maximum = ( sfNames.Count / 6);
+            sdnSubForums.Value = 0;
+            sdnSubForums.LargeChange = 1;
+            sdnSubForums.SmallChange = 1;
+            sdnSubForums.MouseEnter += new System.EventHandler(btn_MouseEnter);
+            sdnSubForums.MouseLeave += new System.EventHandler(btn_MouseLeave);
+
 
             lb_fNamel.Text = "Welcome To Forum " + fName;
 
             int width = tblSubForums.Width;
             int height = tblSubForums.Height;
             tblSubForums.RowStyles.Clear();
-            this.tblSubForums.Size = new System.Drawing.Size(width, height + (sfNames.Count / 2 + sfNames.Count % 2) * 90);
+            this.tblSubForums.Size = new System.Drawing.Size(width, height + (6) * 90);
 
-            for (int i = 0; i < sfNames.Count; i++)
-            {
-                tblSubForums.Controls.Add(subForumButtonCreator(sfNames[i]), i % 2, i / 2); 
-            }
-
-
+            painTable(0, sfNames);
         }
 
         protected override void OnPaint(PaintEventArgs pe)
@@ -64,6 +74,23 @@ namespace Client
         private void btn_MouseLeave(object sender, EventArgs e)
         {
             MouseHandler.mouseLeaveBtn(this);
+        }
+
+
+        private void sdnSubForums_Scroll(object sender, ScrollEventArgs e)
+        {
+                painTable(sdnSubForums.Value*6, sfNames);
+                table_index = sdnSubForums.Value;
+        }
+
+        public void painTable(int index , List<String> sfNames)
+        {
+            tblSubForums.Controls.Clear();
+            for (int i = 0; i < 6; i++)
+            {
+                if (index  + i < sfNames.Count)
+                    tblSubForums.Controls.Add(subForumButtonCreator(sfNames[index + i]), i % 2, i / 2);
+            }
         }
 
     }

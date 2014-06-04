@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace Client
 {
-    public partial class Form1 : Form
+    public partial class MemberPanel : Form
     {
-        public Form1()
+        public MemberPanel()
         {
             InitializeComponent();
         }
@@ -31,13 +31,15 @@ namespace Client
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            SubForumPanel s = new SubForumPanel ( "Cars", new List<string>(){"fiat", "bmw", "subaru", "ford", "susita"});
+            SubForumPanel s = new SubForumPanel("Cars", new List<string>() { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "18", "19", "20", "18", "19", "20" });
             s.TopLevel = false;
             s.Show();
 
             this.panel1.Controls.Add(s);
         }
 
+
+ 
 
     }
 }
