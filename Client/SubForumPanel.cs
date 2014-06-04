@@ -42,7 +42,10 @@ namespace Client
 
             painTable(0, sfNames);
         }
+        private void SubForumPanel_Load(object sender, EventArgs e)
+        {
 
+        }
         protected override void OnPaint(PaintEventArgs pe)
         {
             base.OnPaint(pe);
@@ -92,6 +95,8 @@ namespace Client
                     tblSubForums.Controls.Add(subForumButtonCreator(sfNames[index + i]), i % 2, i / 2);
             }
         }
+
+
 
     }
 }

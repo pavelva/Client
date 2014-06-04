@@ -89,6 +89,7 @@
             this.MaximumSize = new System.Drawing.Size(1000, 400);
             this.MinimumSize = new System.Drawing.Size(1000, 400);
             this.Name = "SubForumPanel";
+            this.Load += new System.EventHandler(this.SubForumPanel_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -44,19 +44,7 @@ namespace Client
             this.panel1.Controls.Remove(this._panel);
         }
 
-        private void btnClose_Clicked(object sender, EventArgs e)
-        {
-            this.panel1.Controls.Remove((Control)sender);
-            foreach(ToolStripItem btm in this.memberMenu.Items){
-                if (btm.Name != "lbluserName")
-                {
-                    btm.Enabled = true;
-                    btm.MouseEnter += new System.EventHandler(this.btn_MouseEnter);
-                    btm.MouseLeave += new System.EventHandler(this.btn_MouseLeave);
-                }
-            }
-            this.panel1.Controls.Add(this._panel);
-        }
+
 
         private void btnDisconnect_Clicked(object sender, EventArgs e)
         {
@@ -75,7 +63,43 @@ namespace Client
         private void btnProfile_Click(object sender, EventArgs e)
         {
             ProfilePanel profilePnael = new ProfilePanel();
-            profilePnael.
+            profilePnael.btnCancel.Click += btnClose_Clicked;
+            this.panel1.Controls.Clear();
+            profilePnael.TopLevel = false;
+            this.panel1.Controls.Add(profilePnael);
+            profilePnael.Show();
+        }
+
+
+
+
+
+        private void btnClose_Clicked(object sender, EventArgs e)
+        {
+            DefualtLayout();
+        }
+
+        private void btnOk_Clicked(object sender, EventArgs e)
+        {
+            MessageBox.Show("2");
+            DefualtLayout();
+        }
+
+        private void DefualtLayout()
+        {
+            this.panel1.Controls.Clear();
+            foreach (ToolStripItem btm in this.memberMenu.Items)
+            {
+                if (btm.Name != "lbluserName")
+                {
+                    btm.Enabled = true;
+                    btm.MouseEnter += new System.EventHandler(this.btn_MouseEnter);
+                    btm.MouseLeave += new System.EventHandler(this.btn_MouseLeave);
+                }
+            }
+            userName = "David";
+            lbluserName.Text = userName;
+            this.panel1.Controls.Add(this._panel);
         }
 
     }
