@@ -70,7 +70,7 @@ namespace Client
 
             this.panel1.Controls.Clear();
             this.panel1.Controls.Add(profilePnael);
-            profilePnael.Show();
+            profilePnael.Show(); 
         }
 
         private void btnSubForum_Clicked(object sender, EventArgs e)
