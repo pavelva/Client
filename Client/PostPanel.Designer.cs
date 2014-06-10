@@ -88,6 +88,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PostPanel";
             this.Text = "PostPanel";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.PostPanel_Load);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);

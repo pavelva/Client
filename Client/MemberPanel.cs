@@ -60,9 +60,11 @@ namespace Client
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            _panel = new SubForumPanel(forumName, new List<string>() { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "18", "19", "20", "18", "19", "20" }, btnSubForum_Clicked);
+            _panel = new SubForumPanel(forumName, new List<string>() { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "18", "19", "20", "18", "19", "20" }, btnSubForum_Clicked , this.Height , this.Width);
             _panel.TopLevel = false;
             _panel.Show();
+            _panel.StartPosition = FormStartPosition.Manual;
+            _panel.Location = new Point(this.Location.X + (this.Width - _panel.Width) / 2, this.Location.Y + (this.Height - _panel.Height) / 2);
             this.panel1.Controls.Add(_panel);
         }
 
@@ -135,6 +137,16 @@ namespace Client
             userName = "David";
             lbluserName.Text = userName;
             this.panel1.Controls.Add(this._panel);
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+           
+        }
+
+        private void memberMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
 
 
