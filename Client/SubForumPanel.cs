@@ -25,8 +25,7 @@ namespace Client
             this.fName = fName;
             this.SubForumBtnClickHandler = SubForumBtnClickHandler;
 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.StartPosition = FormStartPosition.Manual;
+            //this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Size = new Size( w/2,h);
             this.StartPosition = FormStartPosition.CenterParent;
 

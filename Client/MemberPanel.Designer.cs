@@ -31,6 +31,8 @@
             this.memberMenu = new System.Windows.Forms.ToolStrip();
             this.lbluserName = new System.Windows.Forms.ToolStripLabel();
             this.disconnect_userName = new System.Windows.Forms.ToolStripSeparator();
+            this.btnExit = new System.Windows.Forms.ToolStripLabel();
+            this.exit_home = new System.Windows.Forms.ToolStripSeparator();
             this.btnHome = new System.Windows.Forms.ToolStripLabel();
             this.Home_profile = new System.Windows.Forms.ToolStripSeparator();
             this.btnProfile = new System.Windows.Forms.ToolStripLabel();
@@ -47,6 +49,8 @@
             this.memberMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lbluserName,
             this.disconnect_userName,
+            this.btnExit,
+            this.exit_home,
             this.btnHome,
             this.Home_profile,
             this.btnProfile,
@@ -65,12 +69,30 @@
             this.lbluserName.Name = "lbluserName";
             this.lbluserName.Size = new System.Drawing.Size(100, 28);
             this.lbluserName.Text = "userName";
+            this.lbluserName.Click += new System.EventHandler(this.lbluserName_Click);
             // 
             // disconnect_userName
             // 
             this.disconnect_userName.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.disconnect_userName.Name = "disconnect_userName";
             this.disconnect_userName.Size = new System.Drawing.Size(6, 31);
+            this.disconnect_userName.Click += new System.EventHandler(this.disconnect_userName_Click);
+            // 
+            // btnExit
+            // 
+            this.btnExit.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(43, 28);
+            this.btnExit.Text = "Exit";
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            this.btnExit.MouseEnter += new System.EventHandler(this.btn_MouseEnter);
+            this.btnExit.MouseLeave += new System.EventHandler(this.btn_MouseLeave);
+            // 
+            // exit_home
+            // 
+            this.exit_home.Name = "exit_home";
+            this.exit_home.Size = new System.Drawing.Size(6, 31);
+            this.exit_home.Click += new System.EventHandler(this.exit_home_Click);
             // 
             // btnHome
             // 
@@ -79,6 +101,7 @@
             this.btnHome.Name = "btnHome";
             this.btnHome.Size = new System.Drawing.Size(65, 28);
             this.btnHome.Text = "Home";
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             this.btnHome.MouseEnter += new System.EventHandler(this.btn_MouseEnter);
             this.btnHome.MouseLeave += new System.EventHandler(this.btn_MouseLeave);
             // 
@@ -86,6 +109,7 @@
             // 
             this.Home_profile.Name = "Home_profile";
             this.Home_profile.Size = new System.Drawing.Size(6, 31);
+            this.Home_profile.Click += new System.EventHandler(this.Home_profile_Click);
             // 
             // btnProfile
             // 
@@ -105,6 +129,7 @@
             this.btnDisconnect.Name = "btnDisconnect";
             this.btnDisconnect.Size = new System.Drawing.Size(108, 28);
             this.btnDisconnect.Text = "Disconnect";
+            this.btnDisconnect.Click += new System.EventHandler(this.btnDisconnect_Click);
             this.btnDisconnect.MouseEnter += new System.EventHandler(this.btn_MouseEnter);
             this.btnDisconnect.MouseLeave += new System.EventHandler(this.btn_MouseLeave);
             // 
@@ -149,6 +174,8 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStripLabel btnHome;
         private System.Windows.Forms.ToolStripSeparator Home_profile;
+        private System.Windows.Forms.ToolStripLabel btnExit;
+        private System.Windows.Forms.ToolStripSeparator exit_home;
 
     }
 }

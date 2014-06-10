@@ -12,9 +12,11 @@ namespace Client
 {
     public partial class ProfilePanel : Form
     {
-        public ProfilePanel()
+        public ProfilePanel(int h, int w)
         {
             InitializeComponent();
+            this.Size = new Size(2*w/3, h);
+            this.StartPosition = FormStartPosition.CenterParent;
         }
 
         private void ProfilePanel_Load(object sender, EventArgs e)
@@ -34,9 +36,12 @@ namespace Client
 
         private void btnOk_Click(object sender, EventArgs e)
         {
-            //send data to server
-            MessageBox.Show("1");
-            this.btnCancel.PerformClick();
+           btnOk.Text =  tbName.Text;
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
 

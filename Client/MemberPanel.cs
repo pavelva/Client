@@ -13,17 +13,19 @@ namespace Client
 {
     public partial class MemberPanel : Form
     {
-        private Form _panel;
-        private string userName = "David";
-        private string forumName = "Cars";
 
-        public MemberPanel()
+        private Form _panel;
+        private string _userName = "David";
+        private string _forumName = "Cars";
+
+        public MemberPanel(string forumName, string userName)
         {
             InitializeComponent();
             this.memberMenu.Items.Find("btnProfile", true)[0].Click += btnProfile_Clicked;
-            this.memberMenu.Items.Find("btnDisconnect", true)[0].Click += btnDisconnect_Clicked;
             this.memberMenu.Items.Find("btnHome", true)[0].Click += btnHome_Clicked;
-            this.lbluserName.Text = userName;
+            this._userName = userName;
+            this._forumName = forumName;
+            this.lbluserName.Text = this._userName;
         }
 
 
@@ -48,19 +50,13 @@ namespace Client
         }
 
 
-
-        private void btnDisconnect_Clicked(object sender, EventArgs e)
-        {
-            MessageBox.Show("Disconnect");
-        }
-
         private void btnHome_Clicked(object sender, EventArgs e)
         {
             DefualtLayout();
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            _panel = new SubForumPanel(forumName, new List<string>() { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "18", "19", "20", "18", "19", "20" }, btnSubForum_Clicked , this.Height , this.Width);
+            _panel = new SubForumPanel(_forumName, new List<string>() { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "18", "19", "20", "18", "19", "20" }, btnSubForum_Clicked , this.Height , this.Width);
             _panel.TopLevel = false;
             _panel.Show();
             _panel.StartPosition = FormStartPosition.Manual;
@@ -70,9 +66,12 @@ namespace Client
 
         private void btnProfile_Click(object sender, EventArgs e)
         {
-            ProfilePanel profilePnael = new ProfilePanel();
+            ProfilePanel profilePnael = new ProfilePanel(this.Height, this.Width);
             profilePnael.btnCancel.Click += btnClose_Clicked;
+            profilePnael.btnOk.Click += btnOk_Clicked;
             profilePnael.TopLevel = false;
+            profilePnael.StartPosition = FormStartPosition.Manual;
+            profilePnael.Location = new Point(this.Location.X + (this.Width - profilePnael.Width) / 2, this.Location.Y + (this.Height - profilePnael.Height) / 2);
             this.panel1.Controls.Clear();
             this.panel1.Controls.Add(profilePnael);
             profilePnael.Show(); 
@@ -80,7 +79,9 @@ namespace Client
 
         private void btnSubForum_Clicked(object sender, EventArgs e)
         {
-            PostPanel postPanel = new PostPanel(this.forumName, ((Button)sender).Text);
+            PostPanel postPanel = new PostPanel(this._forumName, ((Button)sender).Text , this.Height , this.Width);
+            postPanel.StartPosition = FormStartPosition.Manual;
+            postPanel.Location = new Point(this.Location.X + (this.Width - postPanel.Width) / 2, this.Location.Y + (this.Height - postPanel.Height) / 2);
             postPanel.TopLevel = false;
             this.panel1.Controls.Clear();
             this.panel1.Controls.Add(postPanel);
@@ -109,7 +110,12 @@ namespace Client
 
         private void btnOk_Clicked(object sender, EventArgs e)
         {
-            MessageBox.Show("2");
+
+            if (sender.GetType() == typeof(Button))
+            {
+                _userName = ((Button)sender).Text;
+                this.lbluserName.Text = this._userName;
+            }
             DefualtLayout();
         }
 
@@ -134,8 +140,7 @@ namespace Client
                 }
 
             }
-            userName = "David";
-            lbluserName.Text = userName;
+            lbluserName.Text = _userName;
             this.panel1.Controls.Add(this._panel);
         }
 
@@ -146,6 +151,44 @@ namespace Client
 
         private void memberMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
+
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void lbluserName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void disconnect_userName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void exit_home_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Home_profile_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDisconnect_Click(object sender, EventArgs e)
+        {
+            GuestPanel gp = new GuestPanel(_forumName);
+            gp.ShowDialog();
+            this.Close();
 
         }
 

@@ -16,9 +16,14 @@ namespace Client
         private Dictionary<int, int> postsParents;
         private string _forumName;
         private string _subForumName;
-        public PostPanel(string forumName, string subForumName)
+        public PostPanel(string forumName, string subForumName,  int h, int w)
         {
             InitializeComponent();
+            this.Size = new Size( 2*w/3,h);
+            this.StartPosition = FormStartPosition.CenterParent;
+            panel1.Size = new Size(this.Width / 2, this.Height / 2 + 150);
+            panel1.MaximumSize = panel1.Size;
+
             posts = new Dictionary<int, List<string>>();
             postsParents = new Dictionary<int, int>();
             this._forumName = forumName;
