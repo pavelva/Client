@@ -102,7 +102,7 @@ namespace Client
             {
                 this.Hide();
                 MemberPanel mp = new MemberPanel(_forumName, ((Button)sender).Text);
-                mp.ShowDialog();
+                mp.Show();
                 this.Close();
             }
            

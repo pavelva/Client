@@ -187,7 +187,7 @@ namespace Client
         private void btnDisconnect_Click(object sender, EventArgs e)
         {
             GuestPanel gp = new GuestPanel(_forumName);
-            gp.ShowDialog();
+            gp.Show();
             this.Close();
 
         }
